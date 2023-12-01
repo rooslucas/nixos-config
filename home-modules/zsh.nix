@@ -7,5 +7,5 @@
       lg = "lazygit";
       nd = "nix develop";
     };
-  }
+  };
 }

@@ -13,6 +13,7 @@
       fzf
       git-lfs
       gnumake
+      gh
     ];
   environment.variables = {
     PS1 = "%m %d $ ";

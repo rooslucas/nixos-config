@@ -41,6 +41,7 @@
                 ./home-modules/lazygit.nix
                 ./home-modules/git.nix
                 ./home-modules/ssh.nix
+                ./home-modules/zsh.nix
               ];
             };
           };
