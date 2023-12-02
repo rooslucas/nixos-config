@@ -35,12 +35,13 @@
               # Home-manager level modules
               imports = [
                 { home.stateVersion = "23.05"; }
-                ./home-modules/kitty.nix
-                ./home-modules/helix.nix
-                ./home-modules/zellij.nix
-                ./home-modules/lazygit.nix
+                ./home-modules/direnv.nix
                 ./home-modules/git.nix
+                ./home-modules/helix.nix
+                ./home-modules/kitty.nix
+                ./home-modules/lazygit.nix
                 ./home-modules/ssh.nix
+                ./home-modules/zellij.nix
                 ./home-modules/zsh.nix
               ];
             };
