@@ -5,7 +5,7 @@
   environment.systemPackages =
     with pkgs; [
       python3
-      nodejs
+      nodejs_21
       helix
       bottom
       wget
