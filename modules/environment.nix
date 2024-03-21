@@ -3,7 +3,9 @@
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
   environment.systemPackages =
-    with pkgs; [ 
+    with pkgs; [
+      python3
+      nodejs
       helix
       bottom
       wget
@@ -14,6 +16,7 @@
       git-lfs
       gnumake
       gh
+      tree
     ];
   environment.variables = {
     PS1 = "%m %d $ ";
