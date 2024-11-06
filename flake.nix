@@ -2,18 +2,19 @@
   description = "Example Darwin system flake";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/release-23.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/release-24.05";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nix-darwin = {
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";      
     };
     home-manager = {
-      url = "github:nix-community/home-manager/release-23.11";
+      url = "github:nix-community/home-manager/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = inputs@{ self, nix-darwin, home-manager, nixpkgs }:
+  outputs = inputs@{ self, nix-darwin, home-manager, nixpkgs, nixpkgs-unstable }:
   {
     # Build darwin flake using:
     # $ darwin-rebuild build --flake .#RoosBook
@@ -22,6 +23,7 @@
         ./modules/configuration.nix
         ./modules/environment.nix
         ./modules/zsh.nix
+        ./modules/nix.nix
         home-manager.darwinModules.home-manager
         {
           users.users.roos = {
@@ -47,6 +49,12 @@
             };
           };
         }
+        {
+          config._module.args = {
+            pkgs-unstable = import inputs.nixpkgs-unstable { system = "aarch64-darwin"; config.allowUnfree = true; };
+          };
+        }
+
       ];
     };
 

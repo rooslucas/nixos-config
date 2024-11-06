@@ -1,11 +1,11 @@
-{ pkgs, ... }:
+{ pkgs, pkgs-unstable, ... }:
 {
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
   environment.systemPackages =
-    with pkgs; [
+    (with pkgs; [
       python3
-      nodejs_21
+      nodejs
       helix
       bottom
       wget
@@ -17,7 +17,9 @@
       gnumake
       gh
       tree
-    ];
+    ]) ++ (with pkgs-unstable; [ 
+      devenv 
+    ]);
   environment.variables = {
     PS1 = "%m %d $ ";
     PROMPT = "%m %d $ ";
